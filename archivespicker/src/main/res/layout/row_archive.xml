@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<com.google.android.material.card.MaterialCardView
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+		android:layout_margin="14dp"
+		app:cardElevation="0dp"
+		app:cardBackgroundColor="@color/ceasArchivesColorBackground"
+		app:strokeColor="@color/ceasArchivesColorControlHighlight"
+		app:strokeWidth="1dp"
+		app:cardCornerRadius="6dp"
+		android:id="@+id/row_archive_cardview"
+		android:layout_centerVertical="true">
+
+		<ImageView
+			android:src="@drawable/ic_folder"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/row_archive_imageview_icon"
+			android:scaleType="centerCrop"
+			android:adjustViewBounds="true"/>
+
+	</com.google.android.material.card.MaterialCardView>
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical"
+		android:id="@+id/row_archive_layout_texts"
+		android:layout_toEndOf="@id/row_archive_cardview"
+		android:layout_centerVertical="true"
+		android:layout_marginEnd="56dp">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Text"
+			android:textColor="@color/ceasArchivesColorTitle"
+			android:id="@+id/row_archive_textview_title"
+			android:textSize="16sp"
+			android:singleLine="true"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Text"
+			android:textColor="@color/ceasArchivesColorSubtitle"
+			android:id="@+id/row_archive_textview_subtitle"
+			android:textSize="14sp"
+			android:singleLine="true"/>
+
+	</LinearLayout>
+
+	<View
+		android:layout_width="match_parent"
+		android:background="@color/ceasArchivesColorControlHighlight"
+		android:layout_height="1dp"
+		android:layout_below="@id/row_archive_cardview"
+		android:layout_alignStart="@id/row_archive_layout_texts"/>
+
+	<ImageView
+		android:src="@drawable/ic_chevron_right"
+		android:layout_width="28dp"
+		android:layout_height="28dp"
+		android:layout_alignParentEnd="true"
+		android:layout_centerVertical="true"
+		android:layout_marginEnd="14dp"
+		android:id="@+id/row_archive_icon_right"
+		android:alpha="0.6"/>
+
+</RelativeLayout>
+

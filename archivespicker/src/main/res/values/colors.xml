@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Tema claro-->
+    <color name="ceasArchivesColorAccent">#FF000000</color>
+    <color name="ceasArchivesColorPrimary">#FFF2F2F2</color>
+    <color name="ceasArchivesColorPrimaryDark">#FFF2F2F2</color>
+    <color name="ceasArchivesColorControlHighlight">#FFE0E0E0</color>
+    <color name="ceasArchivesColorControlNormal">#FFF0F0F0</color>
+    <color name="ceasArchivesColorTitle">#FF000000</color>
+    <color name="ceasArchivesColorSubtitle">#FF757575</color>
+    <color name="ceasArchivesColorIcon">#FF000000</color>
+    <color name="ceasArchivesColorBackground">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/activity_archives_picker_coordinator">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/activity_archives_picker_toolbar"
+            android:layout_width="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:titleTextColor="@color/ceasArchivesColorTitle"
+            app:subtitleTextColor="@color/ceasArchivesColorSubtitle"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppBarTheme"/>
+        
+      
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:ellipsize="none"
+            android:fadingEdgeLength="10dp"
+            android:requiresFadingEdge="horizontal"
+            android:id="@+id/activity_archives_picker_recyclerview_paths"/>
+
+        
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:indeterminateTint="@color/ceasArchivesColorSubtitle"
+            android:progressTint="@color/ceasArchivesColorTitle"
+            android:id="@+id/activity_archives_picker_progressbar"
+            style="?android:attr/progressBarStyleHorizontal"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/activity_archives_picker_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/ceasArchivesColorBackground"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/ceasArchivesColorBackground"
+                android:id="@+id/activity_archives_picker_recyclerview"/>
+
+            <include
+                layout="@layout/no_item"
+                android:id="@+id/activity_archives_picker_no_item"/>
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    
+   
+        
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/activity_archives_picker_select"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:text="8/20"
+            android:textStyle="bold"
+            android:layout_margin="16dp"
+            android:layout_gravity="right|bottom"
+            app:cornerRadius="60dp"
+            app:iconPadding="8dp"
+            app:iconGravity="textStart"
+            />
+     
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+

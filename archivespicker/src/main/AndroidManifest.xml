@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ceasdev.archivespicker" >
+
+    <application>
+        <activity
+            android:theme="@style/ActivityTheme"
+            android:name=".ui.archives.ArchivesPickerActivity"
+            android:label="@string/archives_picker" >
+        </activity>
+    </application>
+
+</manifest>
+

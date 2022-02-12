@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ActivityTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimaryDark">@color/ceasArchivesColorPrimaryDark</item>
+        <item name="colorAccent">@color/ceasArchivesColorAccent</item>
+        <item name="colorControlHighlight">@color/ceasArchivesColorControlHighlight</item>
+        <item name="colorControlNormal">@color/ceasArchivesColorControlNormal</item>
+        <item name="android:windowBackground">@color/ceasArchivesColorBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="fontFamily">@font/google_sans_regular</item>
+    </style>
+
+    <style name="AppBarTheme" parent="ThemeOverlay.AppCompat.ActionBar"/>
+    <style name="FilePickerTheme.Popup" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="DialogTheme" parent="Theme.MaterialComponents.Dialog">
+        <item name="colorPrimary">@color/ceasArchivesColorPrimary</item>
+        <item name="colorPrimaryDark">@color/ceasArchivesColorPrimaryDark</item>
+        <item name="colorAccent">@color/ceasArchivesColorAccent</item>
+        <item name="colorControlHighlight">@color/ceasArchivesColorControlHighlight</item>
+        <item name="colorControlNormal">@color/ceasArchivesColorControlNormal</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+</resources>

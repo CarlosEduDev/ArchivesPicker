@@ -1,0 +1,7 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:color="@color/ceasArchivesColorControlHighlight"> 
+    <item 
+        android:id="@android:id/mask" 
+        android:drawable="@color/ceasArchivesColorBackground"/> 
+</ripple> 
+

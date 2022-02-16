@@ -1,27 +1,26 @@
 package com.ceasdev.archivespicker.ui.archives.adapters;
 
-import android.view.View;
-import android.view.ViewGroup;
-import androidx.recyclerview.widget.RecyclerView.Adapter;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import com.ceasdev.archivespicker.data.models.Archive;
-import java.util.ArrayList;
-import java.util.List;
 import android.content.Context;
-import com.ceasdev.archivespicker.utils.ResourceUtil;
-import com.ceasdev.archivespicker.R;
 import android.graphics.drawable.Drawable;
-import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
-import com.ceasdev.archivespicker.data.works.IconApkWork;
-import com.ceasdev.archivespicker.data.works.abstraction.OnViewBehaviorControl;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.ceasdev.archivespicker.R;
 import com.ceasdev.archivespicker.data.FileType;
+import com.ceasdev.archivespicker.data.models.Archive;
+import com.ceasdev.archivespicker.data.works.IconApkWork;
 import com.ceasdev.archivespicker.data.works.ImageWork;
-import java.io.File;
-import java.util.Collections;
+import com.ceasdev.archivespicker.data.works.abstraction.OnViewBehaviorControl;
+import com.ceasdev.archivespicker.utils.ResourceUtil;
+import java.util.ArrayList;
+import java.util.List;
+import com.ceasdev.archivespicker.utils.FileUtil;
 
 public class ArchiveAdapter extends Adapter<ArchiveAdapter.ArchiveViewHolder>{
 
@@ -226,7 +225,6 @@ public class ArchiveAdapter extends Adapter<ArchiveAdapter.ArchiveViewHolder>{
 
         private void setSubtitle(Archive archive){
             binding.subtitle.setText((archive.isFile() ? archive.getSizeString() + " | " : "") + archive.getLastModifiedString());
-            binding.subtitle.append(" " + String.valueOf(archive.isSelected()));
         }
 
 

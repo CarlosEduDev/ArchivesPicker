@@ -91,6 +91,9 @@ public class FileManager implements OnListArchivesListener{
         return currentDiretory.canRead();
     }
 
+    public boolean isEnableHiddenIcon(){
+        return pickerPreferences.isEnableHiddenIcon();
+    }
 
     public boolean isShowHiddenArchives(){
         return pickerPreferences.isHiddenArchives();
@@ -121,7 +124,9 @@ public class FileManager implements OnListArchivesListener{
 
     public boolean previousDirectory(){
         if(currentDiretory.equals(pickerPreferences.getRootDiretory())) return FALSE;
-        currentDiretory = currentDiretory.getParentFile();
+        File parentFile = currentDiretory.getParentFile();
+        if(!parentFile.canRead() && parentFile.isDirectory()) return FALSE;
+        currentDiretory = parentFile;
         return TRUE;
     }
 
@@ -129,6 +134,8 @@ public class FileManager implements OnListArchivesListener{
     public boolean isRunningListArchivesWork(){
         return listArchivesWork.isWorking();
     }
+    
+    
 
 
     private List<Directory> diretoryToList(String diretoryString){

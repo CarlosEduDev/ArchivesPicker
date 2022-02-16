@@ -5,6 +5,7 @@
     <application>
         <activity
             android:theme="@style/ActivityTheme"
+            android:configChanges="orientation|screenSize"
             android:name=".ui.archives.ArchivesPickerActivity"
             android:label="@string/archives_picker" >
         </activity>

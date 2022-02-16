@@ -4,10 +4,10 @@
     <color name="ceasArchivesColorAccent">#FF303135</color>
     <color name="ceasArchivesColorPrimary">#FF292929</color>
     <color name="ceasArchivesColorPrimaryDark">#FF292929</color>
-    <color name="ceasArchivesColorControlHighlight">#FF808080</color>
-    <color name="ceasArchivesColorControlNormal">#FF808080</color>
+    <color name="ceasArchivesColorControlHighlight">#FF292929</color>
+    <color name="ceasArchivesColorControlNormal">#FF373737</color>
     <color name="ceasArchivesColorTitle">#FFFFFFFF</color>
-    <color name="ceasArchivesColorSubtitle">#FF9F9F9F</color>
+    <color name="ceasArchivesColorSubtitle">#FFA0A0A0</color>
     <color name="ceasArchivesColorIcon">#FFFFFFFF</color>
     <color name="ceasArchivesColorBackground">#FF121212</color>
 </resources>

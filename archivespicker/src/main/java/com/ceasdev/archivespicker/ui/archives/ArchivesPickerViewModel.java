@@ -42,6 +42,7 @@ public class ArchivesPickerViewModel extends ViewModel{
             return FALSE;  
     }
 
+    
 
     public void changeHiddenFiles(){
         if(fileManager.isShowHiddenArchives())
@@ -55,6 +56,9 @@ public class ArchivesPickerViewModel extends ViewModel{
         return fileManager.isRunningListArchivesWork();
     }
     
+    public boolean isEnableHiddenIcon(){
+        return fileManager.isEnableHiddenIcon();
+    }
     
     public boolean isShowHiddenArchives(){
         return fileManager.isShowHiddenArchives();

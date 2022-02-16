@@ -1,5 +1,74 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:hint="Icon hidden files"
+				android:id="@+id/activity_main_checkicon"/>
+
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:hint="Hidden files"
+				android:id="@+id/activity_main_checkfile"/>
+
+			<EditText
+				android:layout_width="wrap_content"
+				android:inputType="numberSigned"
+				android:layout_height="wrap_content"
+				android:ems="10"
+				android:hint="MaxFiles"
+				android:id="@+id/activity_main_editmax"
+				android:text="1"/>
+
+		</LinearLayout>
+
+		<EditText
+			android:layout_width="match_parent"
+			android:ems="10"
+			android:layout_height="wrap_content"
+			android:hint="Diretory"
+			android:id="@+id/activity_main_editdiretory"
+			android:text="storage/emulated/0"/>
+
+		<EditText
+			android:layout_width="match_parent"
+			android:inputType="textMultiLine"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:hint="Diretory name"
+			android:id="@+id/activity_main_editdiretory_name"
+			android:text="Internal storage"/>
+
+	</LinearLayout>
+
+	<ListView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="1.0"
+		android:id="@+id/activity_main_listview"/>
+
+	<Button
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="PICKER"
+		android:onClick="onPickerStart"/>
 
 </LinearLayout>
+

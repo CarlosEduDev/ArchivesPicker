@@ -1,4 +1,5 @@
 package com.ceasdev.archivespicker.ui.archives;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import com.ceasdev.archivespicker.ArchivesPicker;
 import com.ceasdev.archivespicker.PickerPreferences;
 import com.ceasdev.archivespicker.R;
 import com.ceasdev.archivespicker.data.models.Archive;
@@ -18,14 +20,10 @@ import com.ceasdev.archivespicker.exceptions.NotFoundPreferencesException;
 import com.ceasdev.archivespicker.ui.archives.adapters.ArchiveAdapter;
 import com.ceasdev.archivespicker.ui.archives.adapters.DirectoryAdapter;
 import com.ceasdev.archivespicker.ui.base.BaseActivity;
+import com.ceasdev.archivespicker.utils.ResourceUtil;
 import com.ceasdev.archivespicker.utils.StringUtil;
 import java.io.File;
 import java.util.List;
-import android.view.View.OnClickListener;
-import android.app.Activity;
-import java.util.Arrays;
-import java.util.ArrayList;
-import com.ceasdev.archivespicker.utils.ResourceUtil;
 
 public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBinding, ArchivesPickerViewModel> implements ArchiveAdapter.OnArchiveListener, DirectoryAdapter.OnDirectoryListener{
 
@@ -40,7 +38,7 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
     @Override
     public void onBackPressed(){
         if(viewModel.isLoadingDiretory()) return;
-        if(!returnDiretory()) super.onBackPressed(); 
+        if(!returnDiretory()) super.onBackPressed();
     }
 
     @Override
@@ -48,6 +46,8 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
         getMenuInflater().inflate(R.menu.menu_toolbar_archives_activity, menu);
         menuHidden = menu.getItem(0);
         menuClose = menu.getItem(1);
+        if(viewModel != null)
+            menuHidden.setVisible(viewModel.isEnableHiddenIcon());
         return true;
     }
 
@@ -140,6 +140,7 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
         archiveAdapter = new ArchiveAdapter(this);
         binding.recyclerArchive.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerArchive.setAdapter(archiveAdapter);
+        binding.recyclerArchive.setItemViewCacheSize(30);
 
         //recyclerDiretory
         directoryAdapter = new DirectoryAdapter(this);
@@ -147,7 +148,7 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
         binding.recyclerDirectory.setAdapter(directoryAdapter);
 
         //ButtonSelect
-        binding.buttonSelect.setText(archiveAdapter.getCountSelectedFiles() +"/"+viewModel.getMaxSelectFiles());
+        binding.buttonSelect.setText(archiveAdapter.getCountSelectedFiles() + "/" + viewModel.getMaxSelectFiles());
         if(viewModel.getMaxSelectFiles() > 1)
             binding.buttonSelect.setVisibility(View.VISIBLE);
         else 
@@ -182,7 +183,7 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
                 @Override
                 public void onClick(View view){
                     if(archiveAdapter == null || archiveAdapter.getCountSelectedFiles() < 1) return;
-                    setResult(Activity.RESULT_OK, new Intent().putStringArrayListExtra("Archives", archiveAdapter.getListFilesSelected()));
+                    setResult(Activity.RESULT_OK, new Intent().putStringArrayListExtra(ArchivesPicker.KEY_STRING_ARRAYLIST_EXTRA, archiveAdapter.getListFilesSelected()));
                     finish();
                 }
 
@@ -201,6 +202,8 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
                     progressStart(300);
                     updateToolbarIcons();
                     updateToolbarTexts(null);
+                    
+                    
                 }
             });
 
@@ -224,8 +227,8 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
 
                 @Override
                 public void onChanged(Integer[] progress){
-                    final int progressCurrent = progress [0];
-                    final int progressMax = progress [1];
+                    final int progressCurrent = progress[0];
+                    final int progressMax = progress[1];
                     progressUpdate(progressCurrent, progressMax);
 
                 }
@@ -290,11 +293,12 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
             else{
                 if(archiveAdapter.getCountSelectedFiles() >= viewModel.getMaxSelectFiles()) return;
                 archiveAdapter.selectItem(position); 
-             }
+            }
         else{
             //Seleção unica
             archiveAdapter.selectItem(position);
-            setResult(Activity.RESULT_OK, new Intent().putStringArrayListExtra("Archives", archiveAdapter.getListFilesSelected()));
+            setResult(Activity.RESULT_OK, new Intent().putStringArrayListExtra(ArchivesPicker.KEY_STRING_ARRAYLIST_EXTRA , archiveAdapter.getListFilesSelected()));
+            finish();
         } 
 
     }
@@ -330,7 +334,7 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
 
     private void updateToolbarTexts(List<Archive> archive){
         binding.toolbar.setTitle(getString(R.string.toolbar_title));
-        if(archive == null) {
+        if(archive == null){
             binding.toolbar.setSubtitle(getString(R.string.loading));
             return;
         }
@@ -345,8 +349,11 @@ public class ArchivesPickerActivity extends BaseActivity<ArchivesPickerViewBindi
     private void updateToolbarIcons(){
         if(menuHidden == null || menuClose == null) return;
         int alpha = viewModel.isLoadingDiretory() ? 150 : 255;
-        menuHidden.getIcon().setAlpha(alpha);
         menuClose.getIcon().setAlpha(alpha);
+        
+        if(!viewModel.isEnableHiddenIcon()) return;
+       
+        menuHidden.getIcon().setAlpha(alpha);
         if(viewModel.isShowHiddenArchives()){
             menuHidden.setIcon(R.drawable.ic_eye);
             menuHidden.setTitle(R.string.gone_hidden_files);

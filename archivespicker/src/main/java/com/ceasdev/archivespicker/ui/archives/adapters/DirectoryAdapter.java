@@ -72,6 +72,7 @@ public class DirectoryAdapter extends Adapter<DirectoryAdapter.DirectoryViewHold
         
         @Override
         public void onClick(View view){
+            if(listDirectory == null || listDirectory.size() <= 1) return;
             final Directory directory = (Directory) binding.rootView.getTag();
             if(onDirectoryListener==null || directory == null) return;
             onDirectoryListener.onClickDirectory(directory);

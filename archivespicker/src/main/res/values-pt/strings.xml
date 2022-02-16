@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="archives_picker">ArchivesPicker</string>
+    <string name="empty_folder">Pasta vazia</string>
+    <string name="root_folder">Armazenamento interno</string>
+    <string name="show_hidden_files">Exibir arquivos ocultos</string>
+    <string name="gone_hidden_files">Ocultar arquivos</string>
+    <string name="close">Fechar</string>
+    <string name="toolbar_title">Arquivos</string>
+    <string name="loading">Carregando...</string>
+    <string name="folder">Pasta</string>
+    <string name="folders">Pastas</string>
+    <string name="file">Arquivo</string>
+    <string name="files">Arquivos</string>
+
+    <string name="TAG_ARCHIVE">ARCHIVE</string>
+    <string name="TAG_POSITION">POSITION</string>
+</resources>
